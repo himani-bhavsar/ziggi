@@ -1,0 +1,23 @@
+{
+  "name": "Signal_Secure",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "~1.2.0",
+    "json3": "~3.3.1",
+    "es5-shim": "~3.1.0",
+    "bootstrap-sass-official": "~3.2.0",
+    "angular-mocks": "1.2.28",
+    "angular-route": "1.2.28",
+    "angular-animate": "1.2.28"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.0",
+    "angular-scenario": "~1.2.0"
+  },
+  "appPath": "app",
+  "resolutions": {
+    "angular": "1.2.28",
+    "angular-cookies": "1.2.28",
+    "angular-resource": "1.2.28"
+  }
+}

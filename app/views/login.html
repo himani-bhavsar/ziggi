@@ -1,0 +1,100 @@
+<!-- <section class="white-back pad-top-20 pad-btm-40">
+  <div class="container">
+    <div class="">
+      <div class="form-contant">
+        <div class="row mrg-top-20">
+          <div class="col-lg-6 col-lg-offset-3  col-lg-12 col-sm-8 col-sm-offset-2 mrg-btm-20">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="contact-form ">
+                  <h2 class="text-black mrg-top0">Login</h2>
+                  <form role="form" name="loginForm" ng-submit="login(loginForm.$valid)">
+                    <div class="form-group" ng-class="{ 'has-error' : loginForm.email.$invalid && !loginForm.email.$pristine }">
+                        <label>Email Address</label>
+                        <input type="email" name="email" placeholder="Email Address" class="form-control" ng-pattern="/^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$/" required ng-model="email">
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Password" id="inputPassword" class="form-control" ng-pattern="/^[0-9a-zA-Z-._]+$/" ng-minlength="6" required ng-model="password">
+                    </div>
+                      <div class="checkbox">
+                          <label><input type="checkbox" ng-model="remember"> Remember me</label>
+                    </div>
+                    <button class="btn btn-primary mrg-rht-20" type="submit">Login</button><a href="#">Forgot Your Password?</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+
+<section class="pad-top-100 pad-btm-40">
+  <div class="container">
+    <div class="">
+      <div class="form-contant">
+        <div class="row mrg-top-20">
+          <div class="col-lg-6 col-lg-offset-3  col-lg-12 col-sm-8 col-sm-offset-2 mrg-btm-20">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="contact-form ">
+                  <img src="../images/login-logo.png" width="" class="img-responsive center-block mrg-btm-20"  alt=""/>
+                  <div id="redMessage" class="alert alert-danger center" ng-if="failerMessage">{{failerMessage}}</div>
+                  <div id="greenMessage" class="alert alert-success center" ng-if="successMessage">{{successMessage}}</div>
+                  <form role="form" name="loginForm">
+                  <div class="login-part"  ng-if="!isForgotPassword">
+                    <div class="form-group">
+                      <input type="email" name="email" placeholder="Email Address" class="form-control" id="emailID" ng-pattern="/^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$/" ng-model="email" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" name="password" placeholder="Password" id="inputPassword" class="form-control" ng-pattern="/^[0-9a-zA-Z-._]+$/" ng-minlength="6" ng-model="password" required>
+                    </div>
+                    <!--                      <div class="checkbox">
+                      <label><input type="checkbox"> Remember me</label>
+                      </div>-->
+                    <div class="row">  
+                      <div class="col-md-9 col-xs-8 font-text" id="blockAccess" ng-if="blockLogin">
+                          Due to 3 failed login trial you are unable to access login! Try after <timer countdown="30" interval="1000"> {{countdown}} </timer> seconds. 
+                      </div> 
+                      <div class="text-right">
+                        <a ng-click="displayForgotTemplate()">Forgot Your Password?</a>
+                        <button class="btn btn-default mrg-lft-10" type="submit" ng-click="login(email,password)">Login</button>
+                      </div>
+                    
+                    </div>
+                    </div>
+
+                    <!-- Start forgot password part -->
+                    <div class="forgot-part" ng-if="isForgotPassword">
+                    <!-- <div class="form-group">
+                      <input type="email" placeholder="Username" class="form-control">
+                    </div> -->
+                    <div class="form-group">
+                      <input type="email" name="email" placeholder="Email Address" class="form-control" ng-model="emailId" required>
+                    </div>
+                    <div class="row">
+                      <div class=" col-md-9 col-xs-8 font-text">
+                         
+                      </div>
+                      <div class=" col-md-3 col-xs-4">
+                        <button class="btn btn-submit pull-right" type="submit" ng-click="forgotPassword(emailId)">Submit</button>
+                      </div>
+                    </div>
+                    </div>
+                    <!-- End forgot password part -->
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

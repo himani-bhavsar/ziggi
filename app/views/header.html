@@ -12,11 +12,10 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a >Home</a></li>
+            <li><a ng-href="#/home">Home</a></li>
             <li><a >About</a></li>
-            <li ng-if="auth"><a ng-href="#/change-password"><i class="fa fa-key"></i>Change Password</a></li>
             <li ng-if="auth"><a class="myClickableThingy" ng-click="logOut()"><i class="fa fa-power-off"></i>Logout</a></li>
-            <li ng-if="!auth"><a href="login"><i class="fa fa-power-off"></i>Login</a></li>
+            <li ng-if="!auth"><a ng-href="#/login"><i class="fa fa-power-off"></i>Login</a></li>
         
 
 

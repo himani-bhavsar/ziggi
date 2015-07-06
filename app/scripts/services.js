@@ -68,39 +68,24 @@ appServices.factory('UserService', function ($http) {
     }
 });
 
-// app.factory('middleware', function() {
-//     return {
-//         request: function(config) {
-//             // need more controlling when there is more than 1 domain involved
-//             config.url = "http://192.168.1.153/" + config.url
-//             return config;
-//         }
-//     };
-// });
+appServices.factory('NotificationService', ['$http', function ($http) {
+    var service = {};
 
-// app.factory('apiUrlHttpInterceptor', function () {
+    service.showError = function (message, title) {
+        toastr.error(message, title);
+    };
 
-//     // Can be an injected constant, value, or taken from some service
-//     var apiUrl = '/'; 
+    service.showSuccess = function (message, title) {
+        toastr.success(message, title);
+    };
 
-//     var shouldPrependApiUrl = function (reqConfig) {
-//       if (!apiUrl) return false;
-//       return !(/[\s\S]*.html/.test(reqConfig.url) ||
-//               (reqConfig.url && reqConfig.url.indexOf(apiUrl) === 0));
-//     };
+    service.showWarning = function (message, title) {
+        toastr.warning(message, title);
+    };
 
-//     return {
-//       request: function (reqConfig) {
-//         // Filter out requests for .html templates, etc
-//         if (apiUrl && shouldPrependApiUrl(reqConfig)) {
-//           reqConfig.url = apiUrl + reqConfig.url;
-//         }
+    service.hideMessages = function () {
+        toastr.clear();
+    };
 
-//         return reqConfig;
-//       }
-//     };
-//   });
-
-  
-    
- 
+    return service;
+}]);

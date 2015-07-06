@@ -1,0 +1,75 @@
+<script src="http://localhost:4300/socket.io/socket.io.js"></script>
+    <div id="map" style="width: 100%; position: absolute; height: 100%">
+    </div>
+   
+    
+    <script type="text/javascript">
+        var map;
+        var flightPath = [];
+        var marker;
+        var isInitialized = false;
+
+        function drawPath (pos) {
+            flightPath.push( pos );
+            map.setCenter( pos )
+            var traject = new google.maps.Polyline({
+                path: flightPath,
+                geodesic: true,
+                strokeColor: '#00000',
+                strokeOpacity: 1.0,
+                strokeWeight: 2
+            });
+            traject.setMap(map);
+            marker.setPosition( map.center );
+        }
+        
+        function InitializeMap(pos) {
+            var options = {
+                zoom: 4,
+                center: pos,
+                mapTypeId: google.maps.MapTypeId.TERRAIN
+            };
+
+            map = new google.maps.Map(document.getElementById('map'), options);
+
+            marker = new google.maps.Marker({
+                position: map.center,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 5
+                },
+                draggable: false,
+            });
+            marker.setMap( map ); 
+            flightPath.push( pos );
+            isInitialized = true;
+        }
+
+
+        function init() {
+          //return;
+                  var socket = io('http://localhost:4300');
+          socket.on('message', function (data) {
+            //console.log(JSON.parse(data));
+                  var ziggiCoomQ = JSON.parse(data);
+          var latlongCommQ=JSON.parse(ziggiCoomQ.Events[0]).coordinates_1;
+                  console.log(ziggiCoomQ);
+          console.log(latlongCommQ.lat);
+          console.log(latlongCommQ.lng);
+
+           var newposition=new google.maps.LatLng(latlongCommQ.lat,latlongCommQ.lng);
+           if( !isInitialized ) 
+              InitializeMap( newposition );
+           else 
+              drawPath( newposition );
+          });
+               
+      }
+
+//Function to convert degree to decimal for lat and long
+
+        google.maps.event.addDomListener(window, 'load', init);
+
+    </script>
+
+   

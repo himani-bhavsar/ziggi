@@ -24,8 +24,8 @@ app.config(['$locationProvider', '$routeProvider', '$httpProvider',
               controller: 'LoginController'
           }).
           when('/home', {
-              templateUrl: 'views/home.html',
-              controller: 'HomeController',
+              templateUrl: 'views/dashboard.html',
+              // controller: 'HomeController',
               access: { requiredAuthentication: true }
           }).
           when('/password/reset/:token', {
@@ -36,8 +36,8 @@ app.config(['$locationProvider', '$routeProvider', '$httpProvider',
               templateUrl: 'views/change-password.html',
               controller: 'LoginController'
           }).
-            otherwise({
-              redirectTo: '/login'
+          otherwise({
+              redirectTo: '/home'
           });
    // $locationProvider.html5Mode(true);
     // $locationProvider.hashPrefix = '!';
@@ -53,7 +53,7 @@ app.run(function($rootScope, $location, $window, $cookieStore, $timeout, Authent
               $location.path("/login");
         }
     });
-    
+
     $rootScope.auth = AuthenticationService.isAuthenticated;
     var href_loc = $window.location.href;
     $rootScope.reset_token = href_loc.split('reset/');

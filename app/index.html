@@ -21,7 +21,8 @@
   <!-- CUSTOM STYLE CSS -->
 
   <link href="styles/style.css" rel="stylesheet" />   
-  <link href="styles/bootstrap.min.css" rel="stylesheet" />         
+  <link href="styles/bootstrap.min.css" rel="stylesheet" />
+  <link href="bower_components/toastr/toastr.css" rel="stylesheet" />         
 
 </head>
   <body ng-app="signalsecure">
@@ -54,8 +55,12 @@
 
     
 <!-- endbuild -->
+    <script src="http://beebotte.com/bbt.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>  
+    <script src="bower_components/jquery/dist/jquery.min.js"></script> 
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"> </script>
+    <script src="http://192.168.1.53:3000/socket.io/socket.io.js"></script>
+    <script src="bower_components/toastr/toastr.js"></script>  
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
